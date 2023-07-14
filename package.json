@@ -1,0 +1,29 @@
+{
+  "name": "step-by-step-event-sourcing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "eventsourced:generate": "npx @databases/pg-schema-cli --database postgres://postgres:Password12!@localhost:5432/postgres --schemaName eventsourcing --directory src/eventsourced/db/__generated__",
+    "eventsourced:migrate": "pg-migrations apply --database postgres://postgres:Password12!@localhost:5432/postgres --directory ./src/eventsourced/migrations/ --ignore-error migration_file_edited",
+    "eventsourced:start": "ts-node -r tsconfig-paths/register ./src/eventsourced/index.ts"
+  },
+  "dependencies": {
+    "@databases/pg": "5.4.1",
+    "@eventstore/db-client": "4.0.0",
+    "convict": "6.2.3",
+    "express": "4.18.2"
+  },
+  "devDependencies": {
+    "@databases/pg-migrations": "5.0.1",
+    "@databases/migrations-base": "3.0.0",
+    "@databases/pg-typed": "4.3.0",
+    "@types/convict": "6.1.1",
+    "@types/express": "4.17.14",
+    "@types/node": "18.11.9",
+    "npm-run-all": "4.1.5",
+    "ts-node": "10.9.1",
+    "tsconfig-paths": "4.1.0",
+    "typescript": "4.8.4"
+  }
+}
