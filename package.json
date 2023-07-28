@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+
     "eventsourced:generate": "npx @databases/pg-schema-cli --database postgres://postgres:Password12!@localhost:5432/postgres --schemaName eventsourcing --directory src/eventsourced/db/__generated__",
     "eventsourced:migrate": "pg-migrations apply --database postgres://postgres:Password12!@localhost:5432/postgres --directory ./src/eventsourced/migrations/ --ignore-error migration_file_edited",
     "eventsourced:start": "ts-node -r tsconfig-paths/register ./src/eventsourced/index.ts"
@@ -25,5 +26,9 @@
     "ts-node": "10.9.1",
     "tsconfig-paths": "4.1.0",
     "typescript": "4.8.4"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/cuongld2/event-source-demo-app-semaphore/issues"
+  },
+  "homepage": "https://github.com/cuongld2/event-source-demo-app-semaphore#readme"
 }

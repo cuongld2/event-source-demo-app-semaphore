@@ -1,6 +1,5 @@
 import { config } from '#config';
 import createConnectionPool, { ConnectionPool } from '@databases/pg';
-import { execSync } from 'child_process';
 
 let db: ConnectionPool;
 

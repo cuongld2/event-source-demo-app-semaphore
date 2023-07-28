@@ -26,6 +26,6 @@ const convictConfig = convict({
   },
 });
 
-convictConfig.validate({ allowed: 'strict' }); // throws error if config does not conform to schema
+convictConfig.validate({ allowed: 'strict' });
 
-export const config = convictConfig.getProperties(); // so we can operate with a plain old JavaScript object and abstract away
+export const config = convictConfig.getProperties();

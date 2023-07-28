@@ -1,12 +1,15 @@
-import { disconnectFromEventStore, getEventStore } from '../core/eventstoredb';
+import { disconnectFromEventStore } from '../core/eventstoredb';
 import { router } from './routes';
 import {
-    handleEventInPostgresTransactionScope,
-    SubscriptionToAll,
-  } from './core/subscriptions';
-  import { disconnectFromPostgres } from '#core/postgres';
-  import { insertUserWithNewEvent } from './users/syncEvent';
+  handleEventInPostgresTransactionScope,
+  SubscriptionToAll,
+} from './core/subscription';
+
+import { disconnectFromPostgres } from '#core/postgres';
+import { insertUserWithNewEvent } from './users/syncEvent';
+import { getEventStore } from '../core/eventstoredb';
 process.once('SIGTERM', disconnectFromPostgres);
+
 process.once('SIGTERM', disconnectFromEventStore);
 
 import express, { Application, Router } from 'express';
@@ -38,8 +41,6 @@ export const startAPI = (router: Router, port = 5000) => {
 };
 
 startAPI(router);
-
-
 SubscriptionToAll(getEventStore, [
   handleEventInPostgresTransactionScope(insertUserWithNewEvent),
 ]);

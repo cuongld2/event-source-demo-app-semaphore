@@ -2,7 +2,8 @@ import { Transaction } from '@databases/pg';
 import {user } from '../db';
 import {
   UserEvent,
-} from './event'
+} from './events'
+
 import {
     JSONRecordedEvent,
     RecordedEvent,
@@ -48,4 +49,3 @@ export const insertUser = async (
     createdAt: new Date(event.data.openedAt),
   });
 };
-
